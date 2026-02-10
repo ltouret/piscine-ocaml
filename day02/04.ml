@@ -16,12 +16,11 @@ let get_nucleobase base =
 	| 'G' -> print_char base; G
 	| _ -> None
 
-let generate_nucleotide base =
-    {
-        phosphate = "phosphate";
-        deoxyribose = "deoxyribose";
-        nucleobase = (get_nucleobase base)
-    }
+let generate_nucleotide base = {
+    phosphate = "phosphate";
+    deoxyribose = "deoxyribose";
+    nucleobase = (get_nucleobase base)
+}
 
 let nucleobase_to_str base =
     match base with
