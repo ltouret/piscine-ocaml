@@ -1,7 +1,9 @@
 class alkane (n : int) =
   object (self)
-    val name: string;
+
+  (* TODO *)
+    (* val name: string;
     val formula: string;
     method to_string : string = name ^ " (" ^ self#formula ^ ")"
-    method equals (other : alkane) : bool = self#formula = other#formula
+    method equals (other : alkane) : bool = self#formula = other#formula *)
   end
