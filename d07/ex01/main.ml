@@ -13,20 +13,20 @@ let () =
     (nh3);
   ] in
 
-  print_endline "==========================================";
-  print_endline "        CHEMICAL ANALYSIS REPORT          ";
-  print_endline "==========================================";
+  print_endline "======================================================================";
+  print_endline "                     CHEMICAL ANALYSIS REPORT                         ";
+  print_endline "======================================================================";
 
   List.iter (fun m ->
-    Printf.printf "Name: %-25s | Formula: %s\n" m#to_string m#formula
+    Printf.printf "Name: %-15s | Full: %-25s | Formula: %s\n" 
+      m#name m#to_string m#formula
   ) lab_samples;
 
-  print_endline "------------------------------------------";
+  print_endline "----------------------------------------------------------------------";
 
-  (* 4. Test Molecule Equality *)
   let another_water = new Molecule.water in
-  Printf.printf "Check: Is Water == Water? %b\n" (h2o#equals another_water);
-  Printf.printf "Check: Is Water == CO2?   %b\n" (h2o#equals co2);
-  Printf.printf "Check: Is Methane == CO2?   %b\n" (ch4#equals co2);
+  Printf.printf "Check: Is %s == %s? %b\n" h2o#name another_water#name (h2o#equals (another_water :> Molecule.molecule));
+  Printf.printf "Check: Is %s == %s?   %b\n" h2o#name co2#name (h2o#equals (co2 :> Molecule.molecule));
+  Printf.printf "Check: Is %s == %s?   %b\n" ch4#name co2#name (ch4#equals (co2 :> Molecule.molecule));
 
-  print_endline "------------------------------------------";
+  print_endline "----------------------------------------------------------------------";

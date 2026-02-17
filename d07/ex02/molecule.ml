@@ -1,5 +1,7 @@
 class virtual molecule (name : string) (atom_list : Atom.atom list) =
   object (self)
+    method name: string = name
+  
     method formula : string =
       (* count diff elems in assoc list *)
       let count_atoms =
