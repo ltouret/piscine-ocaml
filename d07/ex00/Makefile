@@ -2,7 +2,7 @@
 
 OCAMLOPT = ocamlopt
 EXEC = a.out
-SOURCES = people.ml main.ml
+SOURCES = atom.ml main.ml
 
 all: $(EXEC)
 

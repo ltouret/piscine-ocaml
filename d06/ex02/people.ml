@@ -1,6 +1,6 @@
 class people (name : string) =
   object (self)
-  val hp: int = 100
+  val mutable hp: int = 100
 
   initializer
     print_endline ("From far away someone new is here, his name is: " ^ name ^ " and he has " ^ (string_of_int hp) ^ " HP.")
@@ -12,5 +12,9 @@ class people (name : string) =
     print_endline ("I'm " ^ name ^ "! Do you know the Doctor?")
 
   method die =
+    hp <- 0;
     print_endline "Aaaarghh!"
+
+  method get_name =
+    name
 end

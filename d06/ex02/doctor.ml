@@ -8,7 +8,7 @@ class doctor (name : string) (age_init : int) (sidekick : People.people) =
         ("Materialization complete. The Doctor is here, current incarnation: "
        ^ name ^ ". Age: " ^ string_of_int age ^ ". Bio-signs: "
        ^ string_of_int hp ^ " HP. " ^ "Traveling with sidekick: "
-       ^ sidekick#to_string)
+       ^ sidekick#get_name)
 
     method to_string =
       "My name is " ^ name ^ ", I’m the Doctor! I have " ^ string_of_int hp
@@ -37,4 +37,4 @@ class doctor (name : string) (age_init : int) (sidekick : People.people) =
       print_endline "Whiiiiwhiiiwhiii Whiiiiwhiiiwhiii Whiiiiwhiiiwhiii"
 
     method private regenerate = hp <- 100
-  end
+end

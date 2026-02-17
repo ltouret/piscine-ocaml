@@ -4,11 +4,11 @@ module StringHashedType = struct
   let equal s1 s2 = (s1 = s2)
   
   let hash str =
-    let iter func s =
-      let len = String.length s in
+    let iter func str =
+      let len = String.length str in
       let rec inner i =
         if i < len then (
-          func (String.get s i);
+          func (String.get str i);
           inner (i + 1)
         )
       in
