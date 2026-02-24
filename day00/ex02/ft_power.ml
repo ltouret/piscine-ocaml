@@ -6,3 +6,5 @@ let rec ft_power i n =
 
 let _ =
         print_endline (string_of_int (ft_power 3 3));
+        print_endline (string_of_int (ft_power 2 8));
+        print_endline (string_of_int (ft_power 3 1));
