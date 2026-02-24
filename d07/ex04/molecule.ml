@@ -1,8 +1,8 @@
-class virtual molecule (name: string) (atom_list: Atom.atom list) =
+class virtual molecule (name : string) (atom_list : Atom.atom list) =
   object (self)
     method name: string = name
   
-    method formula: string =
+    method formula : string =
       (* count diff elems in assoc list *)
       let count_atoms =
         List.fold_left
@@ -39,8 +39,8 @@ class virtual molecule (name: string) (atom_list: Atom.atom list) =
       in
       String.concat "" string_list
 
-    method to_string: string = name ^ " (" ^ self#formula ^ ")"
-    method equals (other : molecule): bool = self#formula = other#formula
+    method to_string : string = name ^ " (" ^ self#formula ^ ")"
+    method equals (other : molecule) : bool = self#formula = other#formula
   end
 
 class water =
