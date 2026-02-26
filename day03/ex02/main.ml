@@ -1,8 +1,8 @@
 let () =
   print_endline "--- Testing Individual Cards ---";
-  let c1 = newCard Value.As Color.Spade in
-  let c2 = newCard Value.T2 Color.Heart in
-  let c3 = newCard Value.King Color.Spade in
+  let c1 = Card.newCard Value.As Color.Spade in
+  let c2 = Card.newCard Value.T2 Color.Heart in
+  let c3 = Card.newCard Value.King Color.Spade in
 
   print_endline ("Card 1: " ^ toStringVerbose c1);
   print_endline ("Card 2: " ^ toString c2);
@@ -18,7 +18,7 @@ let () =
   Printf.printf "Is %s a Spade? %b\n" (toString c2) heart_check;
 
   print_endline "\n--- Testing List Operations ---";
-  let hand = [c2; c3; newCard Value.T10 Color.Diamond] in
+  let hand = [c2; c3; Card.newCard Value.T10 Color.Diamond] in
   print_endline "In the hand [2H, KS, 10D]:";
   let strongest = best hand in
   print_endline ("The best card is: " ^ toStringVerbose strongest);

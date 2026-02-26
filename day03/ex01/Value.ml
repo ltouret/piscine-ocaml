@@ -1,9 +1,7 @@
 type t = T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10 | Jack | Queen | King | As
 
-(** The list of all values of type t *)
 let all = [T2; T3; T4; T5; T6; T7; T8; T9; T10; Jack; Queen; King; As]
 
-(** Interger representation of a card value, from 1 for T2 to 13 for As *)
 let toInt = function
   | T2 -> 1
   | T3 -> 2
@@ -19,7 +17,6 @@ let toInt = function
   | King -> 12
   | As -> 13
 
-(** returns "2", ..., "10", "J", "Q", "K" or "A" *)
 let toString = function
   | T2 -> "2"
   | T3 -> "3"
@@ -35,7 +32,6 @@ let toString = function
   | King -> "K"
   | As -> "A"
 
-(** returns "2", ..., "10", "Jack", "Queen", "King" or "As" *)
 let toStringVerbose = function
   | T2 -> "2"
   | T3 -> "3"
@@ -51,7 +47,6 @@ let toStringVerbose = function
   | King -> "King"
   | As -> "As"
 
-(** Returns the next value, or calls invalid_arg if argument is As *)
 let next = function
   | T2 -> T3
   | T3 -> T4
@@ -67,8 +62,6 @@ let next = function
   | King -> As
   | As -> invalid_arg "No valid succesor after As"
 
-
-(** Returns the previous value, or calls invalid_arg if argument is T2 *)
 let previous = function
   | T2 -> invalid_arg "No valid precessor before 2"
   | T3 -> T2
