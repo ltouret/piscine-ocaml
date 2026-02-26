@@ -36,5 +36,6 @@ let rec print_crossover_string l =
 let _ =
         print_crossover_int (crossover [1; 2; 3; 4] [1; 2]);
         print_crossover_int (crossover [1] [1; 2]);
+        print_crossover_int (crossover [1] []);
         print_crossover_int (crossover [1; 2; 3; 4] [4; 3; 2; 1]);
         print_crossover_string (crossover ["Mark"; "Dylan"; "Andrew"; "Leo"] ["Mark"; "Dylan"; "Andrew"; "Yi"; "Franco"]);
