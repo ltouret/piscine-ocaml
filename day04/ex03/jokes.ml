@@ -1,7 +1,6 @@
 let read_lines filename =
   try
     let contents = In_channel.with_open_bin filename In_channel.input_all in
-    (* ! maybe add (String.trim contents) here in this line and then add a in to do the list_of_bad_jokes*)
     let list_of_bad_jokes = String.split_on_char '\n' (String.trim contents) in
     Array.of_list list_of_bad_jokes
   with Sys_error msg ->

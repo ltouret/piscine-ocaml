@@ -8,7 +8,7 @@ let eu_dist arr1 arr2 =
       acc
 in
 let sum = loop 0 0.0 in
-(sqrt sum)
+sqrt sum
 
 let () =
     print_float (eu_dist [| 1.0; 3.0; 9.0 |] [| 4.0; 7.0; -3.0 |]);

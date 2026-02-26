@@ -29,6 +29,10 @@ let print_tuple (features, label) =
   Printf.printf "|] -> Label: %s\n" label
 
 let () =
-    let my_data = examples_of_file "test.csv" in
-    List.iter print_tuple my_data;
-    print_char '\n';
+    if Array.length Sys.argv <> 2 then
+      print_endline "Usage: ./program <filename>"
+    else
+      let filename = Sys.argv.(1) in
+      let my_data = examples_of_file  filename in
+      List.iter print_tuple my_data;
+      print_char '\n';
