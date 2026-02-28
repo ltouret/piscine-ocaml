@@ -13,14 +13,9 @@ let () =
         exit 1
       )
       else (
-        let rec loop n =
-          if n > 0 then (
-            print_endline (string_of_int n);
-            my_sleep ();
-            loop (n - 1)
-          )
-        in
-        loop seconds
+        for i = seconds downto 1 do
+          my_sleep ();
+        done
       )
     with
     | Failure _ -> 
