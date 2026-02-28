@@ -11,8 +11,6 @@ module MakeSnd: MAKEPROJECTION = functor (P : PAIR) -> struct
     let x = snd P.pair
 end
 
-(* Testing *)
-
 module Pair : PAIR = struct let pair = ( 21, 42 ) end
 module Fst : VAL = MakeFst (Pair)
 module Snd : VAL = MakeSnd (Pair)
