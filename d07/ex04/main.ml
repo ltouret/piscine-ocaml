@@ -2,24 +2,47 @@ let () =
   let alkanes : Alkane.alkane list = [
       new Alkane.methane; new Alkane.ethane;
       new Alkane.propane; new Alkane.butane;
-      new Alkane.pentane; new Alkane.hexane;
-      new Alkane.heptane; new Alkane.octane;
-      new Alkane.nonane; new Alkane.decane;
-      new Alkane.undecane; new Alkane.dodecane
     ] in
 
-  Printf.printf "%-12s | %-8s | %s\n" "Name" "Formula" "Full String";
-  print_endline "----------------------------------------------------------------------";
+  let print_reaction (r : Reaction.reaction) =
+    let mol_str lst =
+      String.concat " + "
+        (List.map (fun ((m : Molecule.molecule), c) ->
+          if c = 1 then m#formula
+          else string_of_int c ^ " " ^ m#formula) lst)
+    in
+    Printf.printf "%s -> %s\n" (mol_str r#get_start) (mol_str r#get_result)
+  in
 
-
-  List.iter (fun a -> 
-    Printf.printf "%-12s | %-8s | %s\n" a#name a#formula a#to_string
+  print_endline "=== Alkane Combustion ===";
+  List.iter (fun alk ->
+    let comb = new Alkane_combustion.alkane_combustion [alk] in
+    Printf.printf "%-12s | balanced: %-5b | " alk#name comb#is_balanced;
+    let balanced = comb#balance in
+    Printf.printf "after balance: %-5b | " balanced#is_balanced;
+    print_reaction balanced
   ) alkanes;
-  print_endline "----------------------------------------------------------------------";
 
-  let m1 = new Alkane.methane in
-  let a1 = new Alkane.alkane 1 in
-  Printf.printf "\nIdentity Check (Methane vs Alkane 1): %b\n" (m1#equals (a1));
+  print_endline "\n--- Duplicate removal test (3x methane) ---";
+  let comb_dup = new Alkane_combustion.alkane_combustion
+    [new Alkane.methane; new Alkane.methane; new Alkane.methane] in
+  let bal_dup = comb_dup#balance in
+  print_reaction bal_dup;
 
-  let m2 = new Alkane.ethane in
-  Printf.printf "Identity Check (Methane vs Alkane 1): %b\n" (m1#equals (m2))
+  print_endline "\n--- Multi-alkane combustion (methane + propane) ---";
+  let comb_multi = new Alkane_combustion.alkane_combustion
+    [new Alkane.methane; new Alkane.propane] in
+  let bal_multi = comb_multi#balance in
+  print_reaction bal_multi;
+
+  print_endline "\n--- Unbalanced access test ---";
+  let comb_unbal = new Alkane_combustion.alkane_combustion [new Alkane.methane] in
+  Printf.printf "is_balanced: %b\n" comb_unbal#is_balanced;
+  (try
+    ignore (comb_unbal#get_start);
+    print_endline "get_start: no exception (unexpected)"
+  with Failure msg -> Printf.printf "get_start raised: %s\n" msg);
+  (try
+    ignore (comb_unbal#get_result);
+    print_endline "get_result: no exception (unexpected)"
+  with Failure msg -> Printf.printf "get_result raised: %s\n" msg)

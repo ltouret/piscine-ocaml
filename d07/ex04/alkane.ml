@@ -14,6 +14,7 @@ class alkane (n: int) =
   in
   object
     inherit Molecule.molecule name_str atoms_list as super
+    method carbon_count : int = n
 end
 
 class methane =
